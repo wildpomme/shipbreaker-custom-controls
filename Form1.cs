@@ -36,7 +36,7 @@ namespace Shipbreaker_Custom_Controls
         private string configFile = "user_config.ini";
         private string gameFile = @"Shipbreaker_Data\Managed\BBI.Unity.Game.dll";
         private string originalHash = "4a00822be256f3c25446979bec7ca3b1";
-        private string newHash = "3d78de99758d1d6f2c3dd9cf31cd1621";
+        private string newHash = "c12ef5d1473805dbcd594311017f2ebb";
         private string currentHash;
         List<string> keys;
         List<string> mouse;
@@ -61,6 +61,9 @@ namespace Shipbreaker_Custom_Controls
             mouse = System.Enum.GetNames(mouseInstance.GetType()).ToList();
 
             keys.Remove("None");
+            keys.Remove("Return");
+            keys.Remove("Escape");
+            keys.Remove("Backspace");
             mouse.Remove("None");
             mouse.Remove("NegativeX");
             mouse.Remove("PositiveX");
@@ -226,7 +229,7 @@ namespace Shipbreaker_Custom_Controls
             backward.SelectedItem = mouse.Where(x => x == "S").First();
             right.SelectedItem = mouse.Where(x => x == "D").First();
             up.SelectedItem = mouse.Where(x => x == "Space").First();
-            down.SelectedItem = mouse.Where(x => x == "C").First();
+            down.SelectedItem = mouse.Where(x => x == "Shift").First();
             interact.SelectedItem = mouse.Where(x => x == "F").First();
             grapplePush.SelectedItem = mouse.Where(x => x == "F").First();
             leftGrab.SelectedItem = mouse.Where(x => x == "Z").First();
@@ -355,7 +358,7 @@ namespace Shipbreaker_Custom_Controls
             }
             else
             {
-                patchApplied.Text = "The game must have been updated, so this mod will no longer work";
+                patchApplied.Text = "You either have an old version of this patch installed, or the game has been updated. You can try to restore the backup and re-apply the patch.";
                 applyPatch.Enabled = false;
             }
 
@@ -380,6 +383,25 @@ namespace Shipbreaker_Custom_Controls
                 File.Delete(backup);
 
                 UpdateHashes();
+            }
+        }
+
+        private void resetDefaults_Click(object sender, EventArgs e)
+        {
+            applyDefaults();
+        }
+
+        private void createDelta_Click(object sender, EventArgs e)
+        {
+            string game = installLocation + gameFile;
+            string backup = installLocation + gameFile + ".bak";
+            string delta = installLocation + gameFile + ".delta";
+            if (File.Exists(backup))
+            {
+                byte[] gameBytes = File.ReadAllBytes(game);
+                byte[] backupBytes = File.ReadAllBytes(backup);
+                byte[] deltaBytes = Fossil.Delta.Create(backupBytes, gameBytes);
+                File.WriteAllBytes(delta, deltaBytes);
             }
         }
     }

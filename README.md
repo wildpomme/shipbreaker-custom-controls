@@ -12,3 +12,6 @@ and change the controls of the game. More detailed instructions are on the tool 
 Here's an example:
 
 ![Shipbreaker Custom Controls Example](images/example.png)
+
+Note: Please make sure that you have the AZERTY feature disabled in-game, 
+otherwise you could have some issues with this mod.

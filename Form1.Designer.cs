@@ -52,7 +52,6 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label21 = new System.Windows.Forms.Label();
             this.textBox20 = new System.Windows.Forms.TextBox();
-            this.patchApplied = new System.Windows.Forms.Label();
             this.applyControls = new System.Windows.Forms.Button();
             this.fire = new System.Windows.Forms.ComboBox();
             this.altFire = new System.Windows.Forms.ComboBox();
@@ -74,11 +73,14 @@
             this.brake = new System.Windows.Forms.ComboBox();
             this.clearTethers = new System.Windows.Forms.ComboBox();
             this.restoreBackup = new System.Windows.Forms.Button();
+            this.resetDefaults = new System.Windows.Forms.Button();
+            this.createDelta = new System.Windows.Forms.Button();
+            this.patchApplied = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // applyPatch
             // 
-            this.applyPatch.Location = new System.Drawing.Point(239, 213);
+            this.applyPatch.Location = new System.Drawing.Point(13, 248);
             this.applyPatch.Name = "applyPatch";
             this.applyPatch.Size = new System.Drawing.Size(75, 23);
             this.applyPatch.TabIndex = 2;
@@ -90,7 +92,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 262);
+            this.label2.Location = new System.Drawing.Point(52, 295);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 13);
             this.label2.TabIndex = 3;
@@ -99,7 +101,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 287);
+            this.label3.Location = new System.Drawing.Point(37, 320);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 5;
@@ -108,7 +110,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 314);
+            this.label4.Location = new System.Drawing.Point(16, 347);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 7;
@@ -117,7 +119,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 341);
+            this.label5.Location = new System.Drawing.Point(9, 374);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 13);
             this.label5.TabIndex = 9;
@@ -126,7 +128,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 368);
+            this.label6.Location = new System.Drawing.Point(31, 401);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 11;
@@ -135,7 +137,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(51, 395);
+            this.label7.Location = new System.Drawing.Point(51, 428);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(25, 13);
             this.label7.TabIndex = 13;
@@ -144,7 +146,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(21, 422);
+            this.label8.Location = new System.Drawing.Point(21, 455);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 15;
@@ -153,7 +155,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(44, 449);
+            this.label9.Location = new System.Drawing.Point(44, 482);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(32, 13);
             this.label9.TabIndex = 17;
@@ -162,7 +164,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(58, 476);
+            this.label10.Location = new System.Drawing.Point(58, 509);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(21, 13);
             this.label10.TabIndex = 19;
@@ -171,7 +173,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(44, 503);
+            this.label11.Location = new System.Drawing.Point(44, 536);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(35, 13);
             this.label11.TabIndex = 21;
@@ -180,7 +182,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(280, 260);
+            this.label12.Location = new System.Drawing.Point(280, 293);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(43, 13);
             this.label12.TabIndex = 23;
@@ -189,7 +191,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(252, 287);
+            this.label13.Location = new System.Drawing.Point(252, 320);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(71, 13);
             this.label13.TabIndex = 25;
@@ -198,7 +200,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(272, 314);
+            this.label14.Location = new System.Drawing.Point(272, 347);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(51, 13);
             this.label14.TabIndex = 27;
@@ -207,7 +209,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(265, 341);
+            this.label15.Location = new System.Drawing.Point(265, 374);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(58, 13);
             this.label15.TabIndex = 29;
@@ -216,7 +218,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(240, 368);
+            this.label16.Location = new System.Drawing.Point(240, 401);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(83, 13);
             this.label16.TabIndex = 31;
@@ -225,7 +227,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(225, 395);
+            this.label17.Location = new System.Drawing.Point(225, 428);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(98, 13);
             this.label17.TabIndex = 33;
@@ -234,7 +236,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(272, 422);
+            this.label18.Location = new System.Drawing.Point(272, 455);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(51, 13);
             this.label18.TabIndex = 35;
@@ -243,7 +245,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(288, 449);
+            this.label19.Location = new System.Drawing.Point(288, 482);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(35, 13);
             this.label19.TabIndex = 37;
@@ -252,7 +254,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(253, 476);
+            this.label20.Location = new System.Drawing.Point(253, 509);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(70, 13);
             this.label20.TabIndex = 39;
@@ -261,7 +263,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(155, 545);
+            this.linkLabel1.Location = new System.Drawing.Point(155, 578);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(157, 13);
             this.linkLabel1.TabIndex = 1;
@@ -271,7 +273,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(9, 545);
+            this.label21.Location = new System.Drawing.Point(9, 578);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(140, 13);
             this.label21.TabIndex = 0;
@@ -283,23 +285,14 @@
             this.textBox20.Multiline = true;
             this.textBox20.Name = "textBox20";
             this.textBox20.ReadOnly = true;
-            this.textBox20.Size = new System.Drawing.Size(536, 183);
+            this.textBox20.Size = new System.Drawing.Size(543, 183);
             this.textBox20.TabIndex = 0;
             this.textBox20.TabStop = false;
             this.textBox20.Text = resources.GetString("textBox20.Text");
             // 
-            // patchApplied
-            // 
-            this.patchApplied.AutoSize = true;
-            this.patchApplied.Location = new System.Drawing.Point(12, 218);
-            this.patchApplied.Name = "patchApplied";
-            this.patchApplied.Size = new System.Drawing.Size(217, 13);
-            this.patchApplied.TabIndex = 1;
-            this.patchApplied.Text = "Custom controls patch has not been applied.";
-            // 
             // applyControls
             // 
-            this.applyControls.Location = new System.Drawing.Point(459, 532);
+            this.applyControls.Location = new System.Drawing.Point(459, 565);
             this.applyControls.Name = "applyControls";
             this.applyControls.Size = new System.Drawing.Size(95, 23);
             this.applyControls.TabIndex = 3;
@@ -312,7 +305,7 @@
             // 
             this.fire.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fire.FormattingEnabled = true;
-            this.fire.Location = new System.Drawing.Point(82, 257);
+            this.fire.Location = new System.Drawing.Point(82, 290);
             this.fire.Name = "fire";
             this.fire.Size = new System.Drawing.Size(121, 21);
             this.fire.TabIndex = 40;
@@ -321,7 +314,7 @@
             // 
             this.altFire.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.altFire.FormattingEnabled = true;
-            this.altFire.Location = new System.Drawing.Point(82, 284);
+            this.altFire.Location = new System.Drawing.Point(82, 317);
             this.altFire.Name = "altFire";
             this.altFire.Size = new System.Drawing.Size(121, 21);
             this.altFire.TabIndex = 41;
@@ -330,7 +323,7 @@
             // 
             this.rotateLeft.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rotateLeft.FormattingEnabled = true;
-            this.rotateLeft.Location = new System.Drawing.Point(82, 311);
+            this.rotateLeft.Location = new System.Drawing.Point(82, 344);
             this.rotateLeft.Name = "rotateLeft";
             this.rotateLeft.Size = new System.Drawing.Size(121, 21);
             this.rotateLeft.TabIndex = 42;
@@ -339,7 +332,7 @@
             // 
             this.rotateRight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rotateRight.FormattingEnabled = true;
-            this.rotateRight.Location = new System.Drawing.Point(82, 338);
+            this.rotateRight.Location = new System.Drawing.Point(82, 371);
             this.rotateRight.Name = "rotateRight";
             this.rotateRight.Size = new System.Drawing.Size(121, 21);
             this.rotateRight.TabIndex = 43;
@@ -348,7 +341,7 @@
             // 
             this.forward.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.forward.FormattingEnabled = true;
-            this.forward.Location = new System.Drawing.Point(82, 365);
+            this.forward.Location = new System.Drawing.Point(82, 398);
             this.forward.Name = "forward";
             this.forward.Size = new System.Drawing.Size(121, 21);
             this.forward.TabIndex = 44;
@@ -357,7 +350,7 @@
             // 
             this.left.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.left.FormattingEnabled = true;
-            this.left.Location = new System.Drawing.Point(82, 392);
+            this.left.Location = new System.Drawing.Point(82, 425);
             this.left.Name = "left";
             this.left.Size = new System.Drawing.Size(121, 21);
             this.left.TabIndex = 45;
@@ -366,7 +359,7 @@
             // 
             this.backward.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.backward.FormattingEnabled = true;
-            this.backward.Location = new System.Drawing.Point(82, 419);
+            this.backward.Location = new System.Drawing.Point(82, 452);
             this.backward.Name = "backward";
             this.backward.Size = new System.Drawing.Size(121, 21);
             this.backward.TabIndex = 46;
@@ -375,7 +368,7 @@
             // 
             this.right.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.right.FormattingEnabled = true;
-            this.right.Location = new System.Drawing.Point(82, 446);
+            this.right.Location = new System.Drawing.Point(82, 479);
             this.right.Name = "right";
             this.right.Size = new System.Drawing.Size(121, 21);
             this.right.TabIndex = 47;
@@ -384,7 +377,7 @@
             // 
             this.up.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.up.FormattingEnabled = true;
-            this.up.Location = new System.Drawing.Point(82, 473);
+            this.up.Location = new System.Drawing.Point(82, 506);
             this.up.Name = "up";
             this.up.Size = new System.Drawing.Size(121, 21);
             this.up.TabIndex = 48;
@@ -393,7 +386,7 @@
             // 
             this.down.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.down.FormattingEnabled = true;
-            this.down.Location = new System.Drawing.Point(82, 500);
+            this.down.Location = new System.Drawing.Point(82, 533);
             this.down.Name = "down";
             this.down.Size = new System.Drawing.Size(121, 21);
             this.down.TabIndex = 49;
@@ -402,7 +395,7 @@
             // 
             this.interact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.interact.FormattingEnabled = true;
-            this.interact.Location = new System.Drawing.Point(329, 257);
+            this.interact.Location = new System.Drawing.Point(329, 290);
             this.interact.Name = "interact";
             this.interact.Size = new System.Drawing.Size(121, 21);
             this.interact.TabIndex = 50;
@@ -411,7 +404,7 @@
             // 
             this.grapplePush.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.grapplePush.FormattingEnabled = true;
-            this.grapplePush.Location = new System.Drawing.Point(329, 284);
+            this.grapplePush.Location = new System.Drawing.Point(329, 317);
             this.grapplePush.Name = "grapplePush";
             this.grapplePush.Size = new System.Drawing.Size(121, 21);
             this.grapplePush.TabIndex = 51;
@@ -420,7 +413,7 @@
             // 
             this.leftGrab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.leftGrab.FormattingEnabled = true;
-            this.leftGrab.Location = new System.Drawing.Point(329, 311);
+            this.leftGrab.Location = new System.Drawing.Point(329, 344);
             this.leftGrab.Name = "leftGrab";
             this.leftGrab.Size = new System.Drawing.Size(121, 21);
             this.leftGrab.TabIndex = 52;
@@ -429,7 +422,7 @@
             // 
             this.rightGrab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rightGrab.FormattingEnabled = true;
-            this.rightGrab.Location = new System.Drawing.Point(329, 338);
+            this.rightGrab.Location = new System.Drawing.Point(329, 371);
             this.rightGrab.Name = "rightGrab";
             this.rightGrab.Size = new System.Drawing.Size(121, 21);
             this.rightGrab.TabIndex = 53;
@@ -438,7 +431,7 @@
             // 
             this.scanner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.scanner.FormattingEnabled = true;
-            this.scanner.Location = new System.Drawing.Point(329, 365);
+            this.scanner.Location = new System.Drawing.Point(329, 398);
             this.scanner.Name = "scanner";
             this.scanner.Size = new System.Drawing.Size(121, 21);
             this.scanner.TabIndex = 54;
@@ -447,7 +440,7 @@
             // 
             this.workOrder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.workOrder.FormattingEnabled = true;
-            this.workOrder.Location = new System.Drawing.Point(329, 392);
+            this.workOrder.Location = new System.Drawing.Point(329, 425);
             this.workOrder.Name = "workOrder";
             this.workOrder.Size = new System.Drawing.Size(121, 21);
             this.workOrder.TabIndex = 55;
@@ -456,7 +449,7 @@
             // 
             this.flashlight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flashlight.FormattingEnabled = true;
-            this.flashlight.Location = new System.Drawing.Point(329, 419);
+            this.flashlight.Location = new System.Drawing.Point(329, 452);
             this.flashlight.Name = "flashlight";
             this.flashlight.Size = new System.Drawing.Size(121, 21);
             this.flashlight.TabIndex = 56;
@@ -465,7 +458,7 @@
             // 
             this.brake.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.brake.FormattingEnabled = true;
-            this.brake.Location = new System.Drawing.Point(329, 446);
+            this.brake.Location = new System.Drawing.Point(329, 479);
             this.brake.Name = "brake";
             this.brake.Size = new System.Drawing.Size(121, 21);
             this.brake.TabIndex = 57;
@@ -474,7 +467,7 @@
             // 
             this.clearTethers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.clearTethers.FormattingEnabled = true;
-            this.clearTethers.Location = new System.Drawing.Point(329, 473);
+            this.clearTethers.Location = new System.Drawing.Point(329, 506);
             this.clearTethers.Name = "clearTethers";
             this.clearTethers.Size = new System.Drawing.Size(121, 21);
             this.clearTethers.TabIndex = 58;
@@ -490,11 +483,49 @@
             this.restoreBackup.UseVisualStyleBackColor = true;
             this.restoreBackup.Click += new System.EventHandler(this.restoreBackup_Click);
             // 
+            // resetDefaults
+            // 
+            this.resetDefaults.Location = new System.Drawing.Point(459, 396);
+            this.resetDefaults.Name = "resetDefaults";
+            this.resetDefaults.Size = new System.Drawing.Size(97, 23);
+            this.resetDefaults.TabIndex = 60;
+            this.resetDefaults.TabStop = false;
+            this.resetDefaults.Text = "Reset to Defaults";
+            this.resetDefaults.UseVisualStyleBackColor = true;
+            this.resetDefaults.Click += new System.EventHandler(this.resetDefaults_Click);
+            // 
+            // createDelta
+            // 
+            this.createDelta.Enabled = false;
+            this.createDelta.Location = new System.Drawing.Point(479, 248);
+            this.createDelta.Name = "createDelta";
+            this.createDelta.Size = new System.Drawing.Size(75, 23);
+            this.createDelta.TabIndex = 61;
+            this.createDelta.TabStop = false;
+            this.createDelta.Text = "Create Delta";
+            this.createDelta.UseVisualStyleBackColor = true;
+            this.createDelta.Visible = false;
+            this.createDelta.Click += new System.EventHandler(this.createDelta_Click);
+            // 
+            // patchApplied
+            // 
+            this.patchApplied.Location = new System.Drawing.Point(13, 203);
+            this.patchApplied.Multiline = true;
+            this.patchApplied.Name = "patchApplied";
+            this.patchApplied.ReadOnly = true;
+            this.patchApplied.Size = new System.Drawing.Size(440, 39);
+            this.patchApplied.TabIndex = 62;
+            this.patchApplied.TabStop = false;
+            this.patchApplied.Text = "Custom controls patch has not been applied.";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 568);
+            this.ClientSize = new System.Drawing.Size(567, 602);
+            this.Controls.Add(this.patchApplied);
+            this.Controls.Add(this.createDelta);
+            this.Controls.Add(this.resetDefaults);
             this.Controls.Add(this.restoreBackup);
             this.Controls.Add(this.clearTethers);
             this.Controls.Add(this.brake);
@@ -516,7 +547,6 @@
             this.Controls.Add(this.altFire);
             this.Controls.Add(this.fire);
             this.Controls.Add(this.applyControls);
-            this.Controls.Add(this.patchApplied);
             this.Controls.Add(this.textBox20);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.linkLabel1);
@@ -574,7 +604,6 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.Label patchApplied;
         private System.Windows.Forms.Button applyControls;
         private System.Windows.Forms.ComboBox fire;
         private System.Windows.Forms.ComboBox altFire;
@@ -596,6 +625,9 @@
         private System.Windows.Forms.ComboBox brake;
         private System.Windows.Forms.ComboBox clearTethers;
         private System.Windows.Forms.Button restoreBackup;
+        private System.Windows.Forms.Button resetDefaults;
+        private System.Windows.Forms.Button createDelta;
+        private System.Windows.Forms.TextBox patchApplied;
     }
 }
 
