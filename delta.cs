@@ -1,3 +1,40 @@
+private static Mouse ConvertStringToMouse(string mouseString)
+{
+    Mouse mouse;
+    try { mouse = (Mouse)Enum.Parse(typeof(Mouse), mouseString, true); }
+    catch { return Mouse.None; }
+    return mouse;
+}
+
+private static Key[] ConvertStringToKey(string keyString1, string keyString2 = "")
+{
+    Key[] keys;
+
+    Key? key1 = null;
+    Key? key2 = null;
+    try
+    {
+        key1 = (Key)Enum.Parse(typeof(Key), keyString1, true);
+
+        if (!String.IsNullOrEmpty(keyString2))
+        {
+            key2 = (Key)Enum.Parse(typeof(Key), keyString2, true);
+        }
+    }
+    catch { return null; }
+
+    if (key2 != null)
+    {
+        keys = new Key[] { (Key)key1, (Key)key2 };
+    }
+    else
+    {
+        keys = new Key[] { (Key)key1 };
+    }
+
+    return keys;
+}
+
 public static string Fire
 {
     get
@@ -226,41 +263,100 @@ public static string ClearTethers
     }
 }
 
-private static Mouse ConvertStringToMouse(string mouseString)
+public static string CycleScanLeft
 {
-    Mouse mouse;
-    try { mouse = (Mouse)Enum.Parse(typeof(Mouse), mouseString, true); }
-    catch { return Mouse.None; }
-    return mouse;
+    get
+    {
+        return LynxControlsUserOptions.sCycleScanLeft;
+    }
+    set
+    {
+        LynxControlsUserOptions.sCycleScanLeft.Value = value;
+    }
 }
 
-private static Key[] ConvertStringToKey(string keyString1, string keyString2 = "")
+public static string CycleScanRight
 {
-    Key[] keys;
-
-    Key? key1 = null;
-    Key? key2 = null;
-    try
+    get
     {
-        key1 = (Key)Enum.Parse(typeof(Key), keyString1, true);
-
-        if (!String.IsNullOrEmpty(keyString2))
-        {
-            key2 = (Key)Enum.Parse(typeof(Key), keyString2, true);
-        }
+        return LynxControlsUserOptions.sCycleScanRight;
     }
-    catch { return null; }
-
-    if (key2 != null)
+    set
     {
-        keys = new Key[] { (Key)key1, (Key)key2 };
+        LynxControlsUserOptions.sCycleScanRight.Value = value;
     }
-    else
-    {
-        keys = new Key[] { (Key)key1 };
-    }
+}
 
-    return keys;
+public static string PlayAudioLog
+{
+    get
+    {
+        return LynxControlsUserOptions.sPlayAudioLog;
+    }
+    set
+    {
+        LynxControlsUserOptions.sPlayAudioLog.Value = value;
+    }
+}
+
+public static string Unequip
+{
+    get
+    {
+        return LynxControlsUserOptions.sUnequip;
+    }
+    set
+    {
+        LynxControlsUserOptions.sUnequip.Value = value;
+    }
+}
+
+public static string EquipGrapple
+{
+    get
+    {
+        return LynxControlsUserOptions.sEquipGrapple;
+    }
+    set
+    {
+        LynxControlsUserOptions.sEquipGrapple.Value = value;
+    }
+}
+
+public static string EquipCutter
+{
+    get
+    {
+        return LynxControlsUserOptions.sEquipCutter;
+    }
+    set
+    {
+        LynxControlsUserOptions.sEquipCutter.Value = value;
+    }
+}
+
+public static string ToggleFps
+{
+    get
+    {
+        return LynxControlsUserOptions.sToggleFps;
+    }
+    set
+    {
+        LynxControlsUserOptions.sToggleFps.Value = value;
+    }
+}
+
+public static string PauseMenu
+{
+    get
+    {
+        return LynxControlsUserOptions.sPauseMenu;
+    }
+    set
+    {
+        LynxControlsUserOptions.sPauseMenu.Value = value;
+    }
 }
 
 private const string kFire = "Fire";
@@ -320,6 +416,30 @@ private const string kBrakeDesc = " Stops movement";
 private const string kClearTethers = "ClearTethers";
 private const string kClearTethersDesc = " Clears all tethers";
 
+private const string kCycleScanLeft = "CycleScanLeft";
+private const string kCycleScanLeftDesc = " Cycles scanner mode to the left";
+
+private const string kCycleScanRight = "CycleScanRight";
+private const string kCycleScanRightDesc = " Cycles scanner mode to the right";
+
+private const string kPlayAudioLog = "PlayAudioLog";
+private const string kPlayAudioLogDesc = " Plays an audio log";
+
+private const string kUnequip = "Unequip";
+private const string kUnequipDesc = " Puts away your current equipment";
+
+private const string kEquipGrapple = "EquipGrapple";
+private const string kEquipGrappleDesc = " Equips the grapple gun";
+
+private const string kEquipCutter = "EquipCutter";
+private const string kEquipCutterDesc = " Equips the cutter tool";
+
+private const string kToggleFps = "ToggleFps";
+private const string kToggleFpsDesc = " Toggles the fps stats";
+
+private const string kPauseMenu = "PauseMenu";
+private const string kPauseMenuDesc = " Pauses the game and brings up the menu";
+
 private static readonly ConfigStringVar sFire = new ConfigStringVar("Controls", "Fire", " Fires your current equipment", "LeftButton", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
 private static readonly ConfigStringVar sAltFire = new ConfigStringVar("Controls", "AltFire", " Alt fires your current equipment", "RightButton", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
 private static readonly ConfigStringVar sRotateLeft = new ConfigStringVar("Controls", "RotateLeft", " Rotates your body left", "Q", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
@@ -339,6 +459,14 @@ private static readonly ConfigStringVar sWorkOrder = new ConfigStringVar("Contro
 private static readonly ConfigStringVar sFlashlight = new ConfigStringVar("Controls", "Flashlight", " Controls flashlight", "L", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
 private static readonly ConfigStringVar sBrake = new ConfigStringVar("Controls", "Brake", " Stops movement", "Control", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
 private static readonly ConfigStringVar sClearTethers = new ConfigStringVar("Controls", "ClearTethers", " Clears all tethers", "V", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
+private static readonly ConfigStringVar sCycleScanLeft = new ConfigStringVar("Controls", "CycleScanLeft", " Cycles scanner mode to the left", "LeftButton", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
+private static readonly ConfigStringVar sCycleScanRight = new ConfigStringVar("Controls", "CycleScanRight", " Cycles scanner mode to the right", "RightButton", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
+private static readonly ConfigStringVar sPlayAudioLog = new ConfigStringVar("Controls", "PlayAudioLog", " Plays an audio log", "Tab", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
+private static readonly ConfigStringVar sUnequip = new ConfigStringVar("Controls", "Unequip", " Puts away your current equipment", "Backspace", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
+private static readonly ConfigStringVar sEquipGrapple = new ConfigStringVar("Controls", "EquipGrapple", " Equips the grapple gun", "Key1", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
+private static readonly ConfigStringVar sEquipCutter = new ConfigStringVar("Controls", "EquipCutter", " Equips the cutter tool", "Key2", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
+private static readonly ConfigStringVar sToggleFps = new ConfigStringVar("Controls", "ToggleFps", " Toggles the fps stats", "F4", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
+private static readonly ConfigStringVar sPauseMenu = new ConfigStringVar("Controls", "PauseMenu", " Pauses the game and brings up the menu", "Escape", new ConfigValueChangedDelegate(LynxControlsUserOptions.MarkAsDirty), LynxUserOptions.ConfigStore);
 
 LynxControlsUserOptions.sFire.ClearToDefault();
 LynxControlsUserOptions.sAltFire.ClearToDefault();
@@ -359,3 +487,11 @@ LynxControlsUserOptions.sWorkOrder.ClearToDefault();
 LynxControlsUserOptions.sFlashlight.ClearToDefault();
 LynxControlsUserOptions.sBrake.ClearToDefault();
 LynxControlsUserOptions.sClearTethers.ClearToDefault();
+LynxControlsUserOptions.sCycleScanLeft.ClearToDefault();
+LynxControlsUserOptions.sCycleScanRight.ClearToDefault();
+LynxControlsUserOptions.sPlayAudioLog.ClearToDefault();
+LynxControlsUserOptions.sUnequip.ClearToDefault();
+LynxControlsUserOptions.sEquipGrapple.ClearToDefault();
+LynxControlsUserOptions.sEquipCutter.ClearToDefault();
+LynxControlsUserOptions.sToggleFps.ClearToDefault();
+LynxControlsUserOptions.sPauseMenu.ClearToDefault();

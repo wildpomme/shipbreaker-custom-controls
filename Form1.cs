@@ -18,25 +18,11 @@ namespace Shipbreaker_Custom_Controls
 {
     public partial class Form1 : Form
     {
-        public enum Mouse
-        {
-            LeftButton,
-            RightButton,
-            MiddleButton,
-            NegativeX,
-            Button4,
-            Button5,
-            Button6,
-            Button7,
-            Button8,
-            Button9
-        }
-
         private string installLocation;
         private string configFile = "user_config.ini";
         private string gameFile = @"Shipbreaker_Data\Managed\BBI.Unity.Game.dll";
-        private string originalHash = "4a00822be256f3c25446979bec7ca3b1";
-        private string newHash = "c12ef5d1473805dbcd594311017f2ebb";
+        private string originalHash = "039334b73f94d47025944b9d31002340";
+        private string newHash = "11d94b31fac2b97c871933d09bb67bec";
         private string currentHash;
         List<string> keys;
         List<string> mouse;
@@ -51,6 +37,8 @@ namespace Shipbreaker_Custom_Controls
             installLocation = GetInstallLocation();
             UpdateHashes();
 
+            CheckBackup();
+
             Assembly assembly = Assembly.LoadFrom(installLocation + @"Shipbreaker_Data\Managed\InControl.dll");
             Type assemblyKeyType = assembly.GetType("InControl.Key");
             Type assemblyMouseType = assembly.GetType("InControl.Mouse");
@@ -61,9 +49,6 @@ namespace Shipbreaker_Custom_Controls
             mouse = System.Enum.GetNames(mouseInstance.GetType()).ToList();
 
             keys.Remove("None");
-            keys.Remove("Return");
-            keys.Remove("Escape");
-            keys.Remove("Backspace");
             mouse.Remove("None");
             mouse.Remove("NegativeX");
             mouse.Remove("PositiveX");
@@ -93,12 +78,34 @@ namespace Shipbreaker_Custom_Controls
             flashlight.DataSource = mouse.ToList();
             brake.DataSource = mouse.ToList();
             clearTethers.DataSource = mouse.ToList();
+            cycleScanLeft.DataSource = mouse.ToList();
+            cycleScanRight.DataSource = mouse.ToList();
+            playAudioLog.DataSource = mouse.ToList();
+            unequip.DataSource = mouse.ToList();
+            equipGrapple.DataSource = mouse.ToList();
+            equipCutter.DataSource = mouse.ToList();
+            toggleFps.DataSource = mouse.ToList();
+            pauseMenu.DataSource = mouse.ToList();
 
-            applyDefaults();
-            applyCurrentControls();
+            ApplyDefaults();
+            ApplyCurrentControls();
         }
 
-        private void applyCurrentControls()
+        private void CheckBackup()
+        {
+            string backup = installLocation + gameFile + ".bak";
+            if (File.Exists(backup))
+            {
+                string backupHash = GetGameMD5(backup);
+
+                if(!backupHash.Equals(originalHash, StringComparison.OrdinalIgnoreCase))
+                {
+                    File.Delete(backup);
+                }
+            }
+        }
+
+        private void ApplyCurrentControls()
         {
             var parser = new FileIniDataParser();
             IniData data = parser.ReadFile(installLocation + configFile);
@@ -216,9 +223,57 @@ namespace Shipbreaker_Custom_Controls
             {
                 clearTethers.SelectedItem = mouse.Where(x => x == configClearTethers).First();
             }
+
+            string configCycleScanLeft = data["Controls"]["CycleScanLeft"];
+            if (!String.IsNullOrEmpty(configCycleScanLeft))
+            {
+                cycleScanLeft.SelectedItem = mouse.Where(x => x == configCycleScanLeft).First();
+            }
+
+            string configCycleScanRight = data["Controls"]["CycleScanRight"];
+            if (!String.IsNullOrEmpty(configCycleScanRight))
+            {
+                cycleScanRight.SelectedItem = mouse.Where(x => x == configCycleScanRight).First();
+            }
+
+            string configPlayAudioLog = data["Controls"]["PlayAudioLog"];
+            if (!String.IsNullOrEmpty(configPlayAudioLog))
+            {
+                playAudioLog.SelectedItem = mouse.Where(x => x == configPlayAudioLog).First();
+            }
+
+            string configUnequip = data["Controls"]["Unequip"];
+            if (!String.IsNullOrEmpty(configUnequip))
+            {
+                unequip.SelectedItem = mouse.Where(x => x == configUnequip).First();
+            }
+
+            string configEquipGrapple = data["Controls"]["EquipGrapple"];
+            if (!String.IsNullOrEmpty(configEquipGrapple))
+            {
+                equipGrapple.SelectedItem = mouse.Where(x => x == configEquipGrapple).First();
+            }
+
+            string configEquipCutter = data["Controls"]["EquipCutter"];
+            if (!String.IsNullOrEmpty(configEquipCutter))
+            {
+                equipCutter.SelectedItem = mouse.Where(x => x == configEquipCutter).First();
+            }
+
+            string configToggleFps = data["Controls"]["ToggleFps"];
+            if (!String.IsNullOrEmpty(configToggleFps))
+            {
+                toggleFps.SelectedItem = mouse.Where(x => x == configToggleFps).First();
+            }
+
+            string configPauseMenu = data["Controls"]["PauseMenu"];
+            if (!String.IsNullOrEmpty(configPauseMenu))
+            {
+                pauseMenu.SelectedItem = mouse.Where(x => x == configPauseMenu).First();
+            }
         }
 
-        private void applyDefaults()
+        private void ApplyDefaults()
         {
             fire.SelectedItem = mouse.Where(x => x == "LeftButton").First();
             altFire.SelectedItem = mouse.Where(x => x == "RightButton").First();
@@ -239,6 +294,14 @@ namespace Shipbreaker_Custom_Controls
             flashlight.SelectedItem = mouse.Where(x => x == "L").First();
             brake.SelectedItem = mouse.Where(x => x == "Control").First();
             clearTethers.SelectedItem = mouse.Where(x => x == "V").First();
+            cycleScanLeft.SelectedItem = mouse.Where(x => x == "LeftButton").First();
+            cycleScanRight.SelectedItem = mouse.Where(x => x == "RightButton").First();
+            playAudioLog.SelectedItem = mouse.Where(x => x == "Tab").First();
+            unequip.SelectedItem = mouse.Where(x => x == "Backspace").First();
+            equipGrapple.SelectedItem = mouse.Where(x => x == "Key1").First();
+            equipCutter.SelectedItem = mouse.Where(x => x == "Key2").First();
+            toggleFps.SelectedItem = mouse.Where(x => x == "F4").First();
+            pauseMenu.SelectedItem = mouse.Where(x => x == "Escape").First();
         }
 
         private string GetInstallLocation()
@@ -284,11 +347,11 @@ namespace Shipbreaker_Custom_Controls
             return null;
         }
 
-        private string GetGameMD5()
+        private string GetGameMD5(string location)
         {
             using (var md5 = MD5.Create())
             {
-                using (var stream = File.OpenRead(installLocation + gameFile))
+                using (var stream = File.OpenRead(location))
                 {
                     var hash = md5.ComputeHash(stream);
                     return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
@@ -320,6 +383,14 @@ namespace Shipbreaker_Custom_Controls
             data["Controls"]["Flashlight"] = flashlight.SelectedItem.ToString();
             data["Controls"]["Brake"] = brake.SelectedItem.ToString();
             data["Controls"]["ClearTethers"] = clearTethers.SelectedItem.ToString();
+            data["Controls"]["CycleScanLeft"] = cycleScanLeft.SelectedItem.ToString();
+            data["Controls"]["CycleScanRight"] = cycleScanRight.SelectedItem.ToString();
+            data["Controls"]["PlayAudioLog"] = playAudioLog.SelectedItem.ToString();
+            data["Controls"]["Unequip"] = unequip.SelectedItem.ToString();
+            data["Controls"]["EquipGrapple"] = equipGrapple.SelectedItem.ToString();
+            data["Controls"]["EquipCutter"] = equipCutter.SelectedItem.ToString();
+            data["Controls"]["ToggleFps"] = toggleFps.SelectedItem.ToString();
+            data["Controls"]["PauseMenu"] = pauseMenu.SelectedItem.ToString();
 
             parser.WriteFile(installLocation + configFile, data);
         }
@@ -344,7 +415,7 @@ namespace Shipbreaker_Custom_Controls
 
         private void UpdateHashes()
         {
-            currentHash = GetGameMD5();
+            currentHash = GetGameMD5(installLocation + gameFile);
 
             if (originalHash.Equals(currentHash, StringComparison.OrdinalIgnoreCase))
             {
@@ -388,7 +459,7 @@ namespace Shipbreaker_Custom_Controls
 
         private void resetDefaults_Click(object sender, EventArgs e)
         {
-            applyDefaults();
+            ApplyDefaults();
         }
 
         private void createDelta_Click(object sender, EventArgs e)
