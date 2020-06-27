@@ -54,8 +54,6 @@ namespace Shipbreaker_Custom_Controls
             mouse.Remove("PositiveX");
             mouse.Remove("NegativeY");
             mouse.Remove("PositiveY");
-            mouse.Remove("PositiveScrollWheel");
-            mouse.Remove("NegativeScrollWheel");
 
             mouse.AddRange(keys);
 
