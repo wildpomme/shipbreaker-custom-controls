@@ -118,15 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox20.Text" xml:space="preserve">
-    <value>When this application loads, it first checks if the custom controls patch has been applied.
-If the patch has not been applied, please apply it now.
+    <value>Each dropdown consists of all mouse buttons followed by all keyboard keys. To edit your controls, select the mouse button or the key from the dropdown list you would like beside each game action.
 
-Each dropdown consists of all mouse buttons followed by all keyboard keys. To edit your controls, select the mouse button or the key from the dropdown list you would like beside each game action.
-
-Once you have your controls configured how you like, please do not forget to press the Apply Controls button to write them to the user config file in your game directory.
-
-If you would like to uninstall the patch, you can click the Restore Backup button.
-
-Note: The developers are adding customizable controls in a future update. Once the game is updated this mod will break.</value>
+Once you have your controls configured how you like, please do not forget to press the Apply Controls button to write them to the user config file in your game directory.</value>
   </data>
 </root>
